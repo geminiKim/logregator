@@ -4,12 +4,14 @@ import com.google.common.io.Resources;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 
 public class TestFileLoader {
-    public static File read(String path) {
-        return new File(Resources.getResource(path).getPath());
+    public static File load(String path) {
+        URL resource = Resources.getResource(path);
+        return new File(resource.getPath());
     }
-    public static InputStream getInputStream(String path) {
+    public static InputStream loadInputStream(String path) {
         return ClassLoader.class.getResourceAsStream(path);
     }
 }
