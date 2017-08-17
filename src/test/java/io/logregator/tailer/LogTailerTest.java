@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 public class LogTailerTest {
 
     @Test
-    public void testShouleBeInitialize() {
+    public void testShouldBeWork() {
         TailerListener listener = mock(LogTailerListener.class);
         LogTailer tailer = new LogTailer(listener);
 
