@@ -1,12 +1,12 @@
 package io.logregator.tailer;
 
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 import org.apache.commons.io.input.TailerListenerAdapter;
 
 public class LogTailerListener extends TailerListenerAdapter {
-    private final PublishSubject<String> subject;
+    private final Subject<String> subject;
 
-    public LogTailerListener(PublishSubject<String> subject) {
+    public LogTailerListener(Subject<String> subject) {
         this.subject = subject;
     }
 
