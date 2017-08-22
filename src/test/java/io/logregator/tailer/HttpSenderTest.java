@@ -15,13 +15,16 @@ public class HttpSenderTest {
     @Test
     public void testShouldBeExecuteHttpPost() throws Exception {
         HttpClient http = mock(HttpClient.class);
-        HttpSender sender = new HttpSender(http);
+        Sender sender = new HttpSender(http);
 
         sender.send("test");
         verify(http).execute(any(HttpPost.class));
     }
 
-    private class HttpSender {
+    private interface Sender {
+        void send(String message);
+    }
+    private class HttpSender implements Sender {
         private final HttpClient http;
         private final PublishSubject<String> subject;
 
