@@ -1,16 +1,16 @@
 package io.logregator.tailer;
 
-import io.reactivex.subjects.Subject;
+import io.logregator.sender.Sender;
 import org.apache.commons.io.input.TailerListenerAdapter;
 
 public class LogTailerListener extends TailerListenerAdapter {
-    private final Subject<String> subject;
+    private final Sender sender;
 
-    public LogTailerListener(Subject<String> subject) {
-        this.subject = subject;
+    public LogTailerListener(Sender sender) {
+        this.sender = sender;
     }
 
     public void handle(String line) {
-        subject.onNext(line);
+        sender.send(line);
     }
 }

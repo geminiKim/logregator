@@ -1,6 +1,6 @@
 package io.logregator.tailer;
 
-import io.reactivex.subjects.Subject;
+import io.logregator.sender.Sender;
 import org.apache.commons.io.input.TailerListener;
 import org.junit.Test;
 
@@ -9,11 +9,11 @@ import static org.mockito.Mockito.verify;
 
 public class LogTailerListenerTest {
     @Test
-    public void testShouldBeCallOnNext() throws Exception {
-        Subject subject = mock(Subject.class);
-        TailerListener listener = new LogTailerListener(subject);
+    public void testShouldBeCallSend() throws Exception {
+        Sender sender = mock(Sender.class);
+        TailerListener listener = new LogTailerListener(sender);
 
         listener.handle("test");
-        verify(subject).onNext("test");
+        verify(sender).send("test");
     }
 }
