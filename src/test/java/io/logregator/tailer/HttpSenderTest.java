@@ -12,7 +12,7 @@ import static org.mockito.Mockito.verify;
 
 public class HttpSenderTest {
     @Test
-    public void testShouldBeExecuteHttpPost() throws Exception {
+    public void testShouldBeSend() throws Exception {
         HttpClient http = mock(HttpClient.class);
         Sender sender = new HttpSender(http);
 
