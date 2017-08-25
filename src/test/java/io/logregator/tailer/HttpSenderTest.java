@@ -4,20 +4,27 @@ import io.logregator.sender.Sender;
 import io.logregator.sender.http.HttpSender;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class HttpSenderTest {
-    @Test
-    public void testShouldBeSend() throws Exception {
-        HttpClient http = mock(HttpClient.class);
-        Sender sender = new HttpSender(http);
+    private final HttpClient mockHttpClient = mock(HttpClient.class);
+    private Sender sender;
 
-        sender.send("test");
-        verify(http).execute(any(HttpPost.class));
+    @Before
+    public void setup() throws IOException {
+        sender = new HttpSender(mockHttpClient);
     }
 
+    @Test
+    public void testShouldBeSend() throws Exception {
+        sender.send("test");
+        verify(mockHttpClient).execute(any(HttpPost.class));
+    }
 }
