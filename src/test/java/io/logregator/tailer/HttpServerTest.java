@@ -26,7 +26,7 @@ public class HttpServerTest {
     }
 
     @Test
-    public void testShouldBeInitHttpServer() throws Exception {
+    public void testShouldBeCallHandleByHttpRequest() throws Exception {
         HttpClient http = HttpClientBuilder.create().build();
         http.execute(new HttpPost("http://localhost:8888/log"));
 
