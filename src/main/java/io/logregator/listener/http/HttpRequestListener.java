@@ -1,4 +1,4 @@
-package io.logregator.listener;
+package io.logregator.listener.http;
 
 import io.logregator.sender.Sender;
 import org.apache.http.HttpException;

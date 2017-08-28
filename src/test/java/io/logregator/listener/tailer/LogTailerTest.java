@@ -1,4 +1,4 @@
-package io.logregator.tailer;
+package io.logregator.listener.tailer;
 
 import io.logregator.support.ConcurrentTestFileWriter;
 import io.logregator.support.TestFileLoader;

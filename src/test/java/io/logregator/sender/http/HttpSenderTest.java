@@ -1,7 +1,6 @@
-package io.logregator.tailer;
+package io.logregator.sender.http;
 
 import io.logregator.sender.Sender;
-import io.logregator.sender.http.HttpSender;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.junit.Before;

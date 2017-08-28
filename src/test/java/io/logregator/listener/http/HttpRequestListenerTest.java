@@ -1,6 +1,5 @@
-package io.logregator.tailer;
+package io.logregator.listener.http;
 
-import io.logregator.listener.HttpRequestListener;
 import io.logregator.sender.Sender;
 import org.apache.http.HttpRequest;
 import org.apache.http.entity.BasicHttpEntity;

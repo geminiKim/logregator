@@ -1,4 +1,4 @@
-package io.logregator.tailer;
+package io.logregator.listener.tailer;
 
 import org.apache.commons.io.input.Tailer;
 import org.apache.commons.io.input.TailerListener;

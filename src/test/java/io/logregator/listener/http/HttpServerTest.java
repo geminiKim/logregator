@@ -1,4 +1,4 @@
-package io.logregator.tailer;
+package io.logregator.listener.http;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
