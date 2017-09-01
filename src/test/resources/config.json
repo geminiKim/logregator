@@ -1,0 +1,34 @@
+{
+    "configs":[
+        {
+            "listener":{
+                "type": "tail",
+                "config":{
+                    "filePath": "./data/tailer/test.log",
+                    "tailDelay": 100
+                }
+            },
+            "sender":{
+                "type":"http",
+                "config":{
+                    "url": "http://localhost:8888/log"
+                }
+            }
+        },
+        {
+            "listener":{
+                "type": "http",
+                "config":{
+                    "uri": "/log",
+                    "port": 8888
+                }
+            },
+            "sender":{
+                "type":"http",
+                "config":{
+                    "url": "http://localhost:9999/log"
+                }
+            }
+        }
+    ]
+}

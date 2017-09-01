@@ -1,6 +1,5 @@
 package io.logregator.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,8 +10,7 @@ public class ConfigLoaderTest {
 
     @Test
     public void testShouldBeLoadConfig() {
-        ObjectMapper mapper = new ObjectMapper();
-        Config config = new ConfigLoader(mapper).load();
+        LogregatorConfig config = ConfigLoader.load();
         assertThat(config, is(notNullValue()));
     }
 }

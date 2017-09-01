@@ -1,15 +1,21 @@
 package io.logregator.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+import io.logregator.support.exception.LogregatorException;
+import io.logregator.support.util.JsonUtils;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class ConfigLoader {
-    private final ObjectMapper mapper;
-
-    public ConfigLoader(ObjectMapper mapper) {
-        this.mapper = mapper;
-    }
-
-    public static Config load() {
-        return new Config();
+    public static LogregatorConfig load() {
+        try {
+            URL url = Resources.getResource("config.json");
+            return JsonUtils.fromJson(Resources.toString(url, Charsets.UTF_8), LogregatorConfig.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new LogregatorException();
+        }
     }
 }
