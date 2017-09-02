@@ -1,5 +1,5 @@
 {
-    "configs":[
+    "logregator":[
         {
             "listener":{
                 "type": "tail",

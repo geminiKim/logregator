@@ -14,8 +14,7 @@ public class ConfigLoader {
             URL url = Resources.getResource("config.json");
             return JsonUtils.fromJson(Resources.toString(url, Charsets.UTF_8), LogregatorConfig.class);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new LogregatorException();
+            throw new LogregatorException(e);
         }
     }
 }
