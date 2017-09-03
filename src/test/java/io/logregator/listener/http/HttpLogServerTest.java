@@ -1,5 +1,6 @@
 package io.logregator.listener.http;
 
+import io.logregator.worker.http.HttpLogServer;
 import org.apache.http.protocol.HttpRequestHandler;
 import org.junit.Before;
 import org.junit.Test;

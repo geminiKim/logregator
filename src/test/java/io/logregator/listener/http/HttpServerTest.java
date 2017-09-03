@@ -21,14 +21,14 @@ public class HttpServerTest {
 
     @Before
     public void setup() throws IOException {
-        server = ServerBootstrap.bootstrap().registerHandler("/log", mockHttpHandler).setListenerPort(8888).create();
+        server = ServerBootstrap.bootstrap().registerHandler("/log", mockHttpHandler).setListenerPort(9999).create();
         server.start();
     }
 
     @Test
     public void testShouldBeCallHandleByHttpRequest() throws Exception {
         HttpClient http = HttpClientBuilder.create().build();
-        http.execute(new HttpPost("http://localhost:8888/log"));
+        http.execute(new HttpPost("http://localhost:9999/log"));
 
         verify(mockHttpHandler).handle(any(), any(), any());
     }

@@ -1,11 +1,12 @@
-package io.logregator.listener.http;
+package io.logregator.worker.http;
 
 import io.logregator.support.exception.LogregatorException;
+import io.logregator.worker.Worker;
 import org.apache.http.impl.bootstrap.HttpServer;
 import org.apache.http.impl.bootstrap.ServerBootstrap;
 import org.apache.http.protocol.HttpRequestHandler;
 
-public class HttpLogServer {
+public class HttpLogServer implements Worker {
     private final HttpServer server;
     private boolean work;
 

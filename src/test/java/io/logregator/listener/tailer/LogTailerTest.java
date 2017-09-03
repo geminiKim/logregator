@@ -2,31 +2,32 @@ package io.logregator.listener.tailer;
 
 import io.logregator.support.ConcurrentTestFileWriter;
 import io.logregator.support.TestFileLoader;
+import io.logregator.worker.tailer.LogTailer;
 import org.apache.commons.io.input.Tailer;
-import org.apache.commons.io.input.TailerListener;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class LogTailerTest {
-    private final TailerListener mockTailerListener = mock(LogTailerListener.class);
+    private final LogTailerListener mockTailerListener = mock(LogTailerListener.class);
 
     private LogTailer tailer;
 
     @Before
     public void setup() throws IOException {
+        when(mockTailerListener.getPath()).thenReturn("data/tailer/test.log");
         tailer = new LogTailer(mockTailerListener);
     }
 
     @Test
-    public void testShouldBeWork() {
-        tailer.tail("./data/tailer/test.log");
+    public void testShouldBeWorking() {
+        tailer.start();
         assertThat(tailer.isWork(), is(true));
     }
 

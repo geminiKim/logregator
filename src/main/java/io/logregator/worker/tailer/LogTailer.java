@@ -1,23 +1,24 @@
-package io.logregator.listener.tailer;
+package io.logregator.worker.tailer;
 
+import io.logregator.listener.tailer.LogTailerListener;
+import io.logregator.worker.Worker;
 import org.apache.commons.io.input.Tailer;
-import org.apache.commons.io.input.TailerListener;
 
 import java.io.File;
 
-public class LogTailer {
-    private final TailerListener listener;
+public class LogTailer implements Worker {
+    private final LogTailerListener listener;
     private Tailer tailer;
     private boolean work;
 
-    public LogTailer(TailerListener listener) {
+    public LogTailer(LogTailerListener listener) {
         this.listener = listener;
         this.work = false;
     }
 
-    public void tail(String path) {
+    public void start() {
         if(work == true) return;
-        tailer = Tailer.create(new File(path), listener, 100, true);
+        tailer = Tailer.create(new File(listener.getPath()), listener, 100, true);
         work = true;
     }
 

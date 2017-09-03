@@ -1,5 +1,6 @@
 package io.logregator.listener.tailer;
 
+import io.logregator.config.ConfigDetailBuilder;
 import io.logregator.sender.Sender;
 import org.apache.commons.io.input.TailerListener;
 import org.junit.Before;
@@ -15,7 +16,7 @@ public class LogTailerListenerTest {
 
     @Before
     public void setup() {
-        listener = new LogTailerListener(mockSender);
+        listener = new LogTailerListener(mockSender, ConfigDetailBuilder.aConfigDetail().build());
     }
 
     @Test

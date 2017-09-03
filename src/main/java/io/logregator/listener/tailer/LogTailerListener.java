@@ -1,16 +1,30 @@
 package io.logregator.listener.tailer;
 
+import io.logregator.config.ComponentType;
+import io.logregator.config.ConfigDetail;
+import io.logregator.listener.Listener;
 import io.logregator.sender.Sender;
 import org.apache.commons.io.input.TailerListenerAdapter;
 
-public class LogTailerListener extends TailerListenerAdapter {
+public class LogTailerListener extends TailerListenerAdapter implements Listener {
     private final Sender sender;
+    private final String path;
 
-    public LogTailerListener(Sender sender) {
+    public LogTailerListener(Sender sender, ConfigDetail config) {
         this.sender = sender;
+        this.path = config.getConfigValue("filePath", String.class);
     }
 
     public void handle(String line) {
         sender.send(line);
+    }
+
+    @Override
+    public ComponentType getType() {
+        return ComponentType.tail;
+    }
+
+    public String getPath() {
+        return path;
     }
 }
