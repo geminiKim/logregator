@@ -1,5 +1,5 @@
 package io.logregator.config;
 
-public enum  ConfigType {
+public enum ComponentType {
     tail, http
 }

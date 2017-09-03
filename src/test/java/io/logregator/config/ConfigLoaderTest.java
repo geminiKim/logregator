@@ -2,8 +2,8 @@ package io.logregator.config;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ConfigLoaderTest {
@@ -11,6 +11,6 @@ public class ConfigLoaderTest {
     @Test
     public void testShouldBeLoadConfig() {
         LogregatorConfig config = ConfigLoader.load();
-        assertThat(config, is(notNullValue()));
+        assertThat(config.getConfigs().size(), is(greaterThan(0)));
     }
 }

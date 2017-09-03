@@ -8,5 +8,5 @@ import java.util.List;
 @Getter
 @Setter
 public class LogregatorConfig {
-    private List<Config> logregator;
+    private List<Config> configs;
 }
