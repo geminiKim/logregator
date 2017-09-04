@@ -4,8 +4,10 @@ import io.logregator.config.ComponentType;
 import io.logregator.config.ConfigDetail;
 import io.logregator.listener.Listener;
 import io.logregator.sender.Sender;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.input.TailerListenerAdapter;
 
+@Slf4j
 public class LogTailerListener extends TailerListenerAdapter implements Listener {
     private final Sender sender;
     private final String path;

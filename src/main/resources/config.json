@@ -4,7 +4,7 @@
             "listener":{
                 "type": "tail",
                 "config":{
-                    "filePath": "./data/tailer/test.log",
+                    "filePath": "/Users/gemini/Desktop/test.log",
                     "tailDelay": 100
                 }
             },
