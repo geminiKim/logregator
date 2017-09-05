@@ -1,8 +1,8 @@
 package io.logregator.sender;
 
-import io.logregator.config.ComponentType;
-import io.logregator.config.ConfigDetail;
 import io.logregator.config.ConfigDetailBuilder;
+import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.component.ComponentType;
 import org.apache.http.client.HttpClient;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class SenderBuilderTest {
 
     @Test
     public void testShouldBeBuildHttpSender() {
-        ConfigDetail config = configDetailBuilder.withType(ComponentType.http).build();
+        ComponentConfig config = configDetailBuilder.withType(ComponentType.http).build();
         config.addConfig("url", "test");
         config.addConfig("_httpClient", mock(HttpClient.class));
 

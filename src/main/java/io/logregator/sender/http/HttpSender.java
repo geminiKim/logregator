@@ -1,7 +1,7 @@
 package io.logregator.sender.http;
 
-import io.logregator.config.ComponentType;
-import io.logregator.config.ConfigDetail;
+import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.component.ComponentType;
 import io.logregator.sender.Sender;
 import io.reactivex.subjects.PublishSubject;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ public class HttpSender implements Sender {
     private final HttpClient http;
     private final PublishSubject<String> subject;
 
-    public HttpSender(ConfigDetail config) {
+    public HttpSender(ComponentConfig config) {
         this.http = config.getConfigValue("_httpClient", HttpClient.class);
         subject = PublishSubject.create();
         subject.subscribe(message -> {

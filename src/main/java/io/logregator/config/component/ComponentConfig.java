@@ -1,4 +1,4 @@
-package io.logregator.config;
+package io.logregator.config.component;
 
 import com.google.common.collect.Maps;
 import lombok.Getter;
@@ -8,14 +8,14 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class ConfigDetail {
+public class ComponentConfig {
     private ComponentType type;
     private Map<String, Object> config;
 
-    private ConfigDetail() {
+    private ComponentConfig() {
     }
 
-    public ConfigDetail(ComponentType type) {
+    public ComponentConfig(ComponentType type) {
         this.type = type;
         this.config = Maps.newHashMap();
     }

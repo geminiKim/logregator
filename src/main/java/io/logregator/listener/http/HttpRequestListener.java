@@ -1,6 +1,6 @@
 package io.logregator.listener.http;
 
-import io.logregator.config.ComponentType;
+import io.logregator.config.component.ComponentType;
 import io.logregator.listener.Listener;
 import io.logregator.sender.Sender;
 import org.apache.http.HttpException;

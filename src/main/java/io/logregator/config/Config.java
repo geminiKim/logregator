@@ -1,11 +1,12 @@
 package io.logregator.config;
 
+import io.logregator.config.component.ComponentConfig;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class Config {
-    private ConfigDetail listener;
-    private ConfigDetail sender;
+    private ComponentConfig listener;
+    private ComponentConfig sender;
 }

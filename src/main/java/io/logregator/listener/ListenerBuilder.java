@@ -1,13 +1,13 @@
 package io.logregator.listener;
 
-import io.logregator.config.ConfigDetail;
+import io.logregator.config.component.ComponentConfig;
 import io.logregator.listener.http.HttpRequestListener;
 import io.logregator.listener.tailer.LogTailerListener;
 import io.logregator.sender.Sender;
 import io.logregator.support.exception.LogregatorException;
 
 public class ListenerBuilder {
-    public static Listener build(ConfigDetail config, Sender sender) {
+    public static Listener build(ComponentConfig config, Sender sender) {
         switch (config.getType()) {
             case tail:
                 return new LogTailerListener(sender, config);

@@ -1,8 +1,8 @@
 package io.logregator.listener;
 
-import io.logregator.config.ComponentType;
-import io.logregator.config.ConfigDetail;
 import io.logregator.config.ConfigDetailBuilder;
+import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.component.ComponentType;
 import io.logregator.sender.http.HttpSender;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class ListenerBuilderTest {
 
     @Test
     public void testShouldBeBuildHttpListener() {
-        ConfigDetail config = configDetailBuilder.withType(ComponentType.http).build();
+        ComponentConfig config = configDetailBuilder.withType(ComponentType.http).build();
 
         Listener listener = ListenerBuilder.build(config, mock(HttpSender.class));
         assertThat(listener.getType(), is(ComponentType.http));

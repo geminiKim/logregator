@@ -1,6 +1,8 @@
 package io.logregator.config;
 
 import com.google.common.collect.Maps;
+import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.component.ComponentType;
 
 import java.util.Map;
 
@@ -25,9 +27,9 @@ public final class ConfigDetailBuilder {
         return this;
     }
 
-    public ConfigDetail build() {
-        ConfigDetail configDetail = new ConfigDetail(type);
-        configDetail.setConfig(config);
-        return configDetail;
+    public ComponentConfig build() {
+        ComponentConfig componentConfig = new ComponentConfig(type);
+        componentConfig.setConfig(config);
+        return componentConfig;
     }
 }

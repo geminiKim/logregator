@@ -1,14 +1,17 @@
 package io.logregator.config;
 
+import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.component.ComponentType;
+
 public final class ConfigBuilder {
-    private ConfigDetail listener = buildDefaultConfigDetail();
-    private ConfigDetail sender = buildDefaultConfigDetail();
+    private ComponentConfig listener = buildDefaultConfigDetail();
+    private ComponentConfig sender = buildDefaultConfigDetail();
 
     private ConfigBuilder() {
     }
 
-    private ConfigDetail buildDefaultConfigDetail() {
-        ConfigDetail detail = new ConfigDetail(ComponentType.http);
+    private ComponentConfig buildDefaultConfigDetail() {
+        ComponentConfig detail = new ComponentConfig(ComponentType.http);
         return detail;
     }
 
@@ -16,12 +19,12 @@ public final class ConfigBuilder {
         return new ConfigBuilder();
     }
 
-    public ConfigBuilder withListener(ConfigDetail listener) {
+    public ConfigBuilder withListener(ComponentConfig listener) {
         this.listener = listener;
         return this;
     }
 
-    public ConfigBuilder withSender(ConfigDetail sender) {
+    public ConfigBuilder withSender(ComponentConfig sender) {
         this.sender = sender;
         return this;
     }
