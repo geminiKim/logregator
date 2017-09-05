@@ -14,14 +14,17 @@ import org.apache.http.entity.StringEntity;
 @Slf4j
 public class HttpSender implements Sender {
     private final HttpClient http;
+    private final String url;
     private final PublishSubject<String> subject;
 
     public HttpSender(ComponentConfig config) {
         this.http = config.getConfigValue("_httpClient", HttpClient.class);
+        this.url = config.getConfigValue("url", String.class);
+
         subject = PublishSubject.create();
         subject.subscribe(message -> {
             try {
-                HttpPost request = new HttpPost(config.getConfigValue("url", String.class));
+                HttpPost request = new HttpPost(url);
                 request.setEntity(new StringEntity(message, ContentType.APPLICATION_JSON));
                 HttpResponse response = http.execute(request);
                 response.setEntity(new StringEntity(message, ContentType.APPLICATION_JSON));
