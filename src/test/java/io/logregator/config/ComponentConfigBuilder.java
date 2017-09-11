@@ -6,23 +6,23 @@ import io.logregator.config.component.ComponentType;
 
 import java.util.Map;
 
-public final class ConfigDetailBuilder {
+public final class ComponentConfigBuilder {
     private ComponentType type = ComponentType.http;
     private Map<String, Object> config = Maps.newHashMap();
 
-    private ConfigDetailBuilder() {
+    private ComponentConfigBuilder() {
     }
 
-    public static ConfigDetailBuilder aConfigDetail() {
-        return new ConfigDetailBuilder();
+    public static ComponentConfigBuilder aConfigDetail() {
+        return new ComponentConfigBuilder();
     }
 
-    public ConfigDetailBuilder withType(ComponentType type) {
+    public ComponentConfigBuilder withType(ComponentType type) {
         this.type = type;
         return this;
     }
 
-    public ConfigDetailBuilder withConfig(Map<String, Object> config) {
+    public ComponentConfigBuilder withConfig(Map<String, Object> config) {
         this.config = config;
         return this;
     }

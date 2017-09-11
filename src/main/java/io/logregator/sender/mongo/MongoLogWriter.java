@@ -1,23 +1,19 @@
 package io.logregator.sender.mongo;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import io.logregator.config.component.ComponentConfig;
+import io.logregator.support.util.JsonUtils;
 import org.bson.Document;
 
-public class MongoLogWriter {
-    private final MongoClient client;
-    private final MongoDatabase database;
-    private final MongoCollection<Document> collection;
+import java.util.Map;
 
-    public MongoLogWriter(ComponentConfig config) {
-        client = new MongoClient(config.getConfigValue("host", String.class), config.getConfigValue("port", Integer.class));
-        database = client.getDatabase(config.getConfigValue("database", String.class));
-        collection = database.getCollection(config.getConfigValue("collection", String.class));
+public class MongoLogWriter {
+    private final MongoConfig config;
+
+    public MongoLogWriter(MongoConfig config) {
+        this.config = config;
     }
 
     public void write(String message) {
-
+        Map log = JsonUtils.fromJson(message, Map.class);
+        config.getCollection().insertOne(new Document(log));
     }
 }

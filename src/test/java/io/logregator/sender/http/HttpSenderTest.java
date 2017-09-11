@@ -1,7 +1,7 @@
 package io.logregator.sender.http;
 
 import com.google.common.collect.Maps;
-import io.logregator.config.ConfigDetailBuilder;
+import io.logregator.config.ComponentConfigBuilder;
 import io.logregator.config.component.ComponentConfig;
 import io.logregator.sender.Sender;
 import org.apache.http.client.HttpClient;
@@ -31,7 +31,7 @@ public class HttpSenderTest {
     public void setup() throws IOException {
         HashMap<String, Object> map = buildTestConfig();
 
-        ComponentConfig build = ConfigDetailBuilder.aConfigDetail()
+        ComponentConfig build = ComponentConfigBuilder.aConfigDetail()
                                     .withConfig(map)
                                     .build();
         sender = new HttpSender(build);
