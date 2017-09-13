@@ -29,6 +29,24 @@
                     "url": "http://localhost:9999/log"
                 }
             }
+        },
+        {
+            "listener":{
+                "type": "http",
+                "config":{
+                    "uri": "/log",
+                    "port": 8899
+                }
+            },
+            "sender":{
+                "type":"mongo",
+                "config":{
+                    "host": "localhost",
+                    "port": 27017,
+                    "database": "logregator",
+                    "collection": "log"
+                }
+            }
         }
     ]
 }

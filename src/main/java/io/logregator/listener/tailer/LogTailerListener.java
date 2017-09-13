@@ -14,7 +14,7 @@ public class LogTailerListener extends TailerListenerAdapter implements Listener
 
     public LogTailerListener(Sender sender, ComponentConfig config) {
         this.sender = sender;
-        this.path = config.getConfigValue("filePath", String.class);
+        this.path = config.getConfigString("filePath");
     }
 
     public void handle(String line) {

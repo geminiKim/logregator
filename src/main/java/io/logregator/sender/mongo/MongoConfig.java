@@ -19,8 +19,8 @@ public class MongoConfig {
     }
 
     public MongoConfig(ComponentConfig config) {
-        client = new MongoClient(config.getConfigValue("host", String.class), config.getConfigValue("port", Integer.class));
-        database = client.getDatabase(config.getConfigValue("database", String.class));
-        collection = database.getCollection(config.getConfigValue("collection", String.class));
+        client = new MongoClient(config.getConfigString("host"), config.getConfigInt("port"));
+        database = client.getDatabase(config.getConfigString("database"));
+        collection = database.getCollection(config.getConfigString("collection"));
     }
 }

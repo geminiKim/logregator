@@ -20,8 +20,14 @@ public class ComponentConfig {
         this.config = Maps.newHashMap();
     }
 
-    public <T> T getConfigValue(String key, Class<T> clazz) {
+    private  <T> T getConfigValue(String key, Class<T> clazz) {
         return (T) config.get(key);
+    }
+    public String getConfigString(String key) {
+        return getConfigValue(key, String.class);
+    }
+    public int getConfigInt(String key) {
+        return getConfigValue(key, Integer.class);
     }
 
     public void addConfig(String key, Object value) {

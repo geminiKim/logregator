@@ -11,7 +11,10 @@ public class HttpLogServer implements Worker {
     private boolean work;
 
     public HttpLogServer(HttpRequestHandler httpHandler) {
-        this.server = ServerBootstrap.bootstrap().registerHandler("/log", httpHandler).setListenerPort(8888).create();
+        String url = "/log";
+        int port = 8888;
+
+        this.server = ServerBootstrap.bootstrap().registerHandler(url, httpHandler).setListenerPort(port).create();
         this.work = false;
     }
 

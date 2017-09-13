@@ -17,6 +17,6 @@ public class HttpConfig {
 
     public HttpConfig(ComponentConfig config) {
         httpClient = HttpClientBuilder.create().build();
-        url = config.getConfigValue("url", String.class);
+        url = config.getConfigString("url");
     }
 }
