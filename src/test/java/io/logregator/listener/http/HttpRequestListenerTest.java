@@ -20,7 +20,7 @@ public class HttpRequestListenerTest {
 
     @Before
     public void setup() {
-        httpRequestListener = new HttpRequestListener(mockSender);
+        httpRequestListener = new HttpRequestListener(HttpServerConfigBuilder.aHttpServerConfig().build(), mockSender);
     }
 
     @Test

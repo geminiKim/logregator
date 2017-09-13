@@ -11,15 +11,16 @@ import java.util.Map;
 
 @Slf4j
 public class MongoSender implements Sender {
+    private final MongoConfig config;
     private final PublishSubject<String> subject;
 
-    public MongoSender(MongoConfig config) {
+    public MongoSender(MongoConfig configuration) {
+        config = configuration;
         subject = PublishSubject.create();
         subject.subscribe(message -> {
             Map log = JsonUtils.fromJson(message, Map.class);
             config.getCollection().insertOne(new Document(log));
         });
-
     }
 
     @Override

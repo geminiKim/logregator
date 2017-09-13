@@ -21,7 +21,7 @@ public class LogTailerTest {
 
     @Before
     public void setup() throws IOException {
-        when(mockTailerListener.getPath()).thenReturn("data/tailer/test.log");
+        when(mockTailerListener.getConfig()).thenReturn(TailerConfigBuilder.aTailerConfig().withPath("data/tailer/test.log").build());
         tailer = new LogTailer(mockTailerListener);
     }
 

@@ -26,7 +26,7 @@ public class ComponentConfig {
     public String getConfigString(String key) {
         return getConfigValue(key, String.class);
     }
-    public int getConfigInt(String key) {
+    public Integer getConfigInt(String key) {
         return getConfigValue(key, Integer.class);
     }
 

@@ -15,9 +15,11 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 public class HttpRequestListener implements HttpRequestHandler, Listener {
+    private final HttpServerConfig config;
     private final Sender sender;
 
-    public HttpRequestListener(Sender sender) {
+    public HttpRequestListener(HttpServerConfig config, Sender sender) {
+        this.config = config;
         this.sender = sender;
     }
 
@@ -32,5 +34,9 @@ public class HttpRequestListener implements HttpRequestHandler, Listener {
     @Override
     public ComponentType getType() {
         return ComponentType.http;
+    }
+
+    public HttpServerConfig getConfig() {
+        return config;
     }
 }

@@ -10,9 +10,11 @@ import org.apache.http.entity.StringEntity;
 
 @Slf4j
 public class HttpSender implements Sender {
+    private final HttpConfig config;
     private final PublishSubject<String> subject;
 
-    public HttpSender(HttpConfig config) {
+    public HttpSender(HttpConfig configuration) {
+        config = configuration;
         subject = PublishSubject.create();
         subject.subscribe(message -> {
             try {

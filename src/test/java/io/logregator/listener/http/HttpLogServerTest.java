@@ -1,21 +1,22 @@
 package io.logregator.listener.http;
 
 import io.logregator.worker.http.HttpLogServer;
-import org.apache.http.protocol.HttpRequestHandler;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class HttpLogServerTest {
-    private final HttpRequestHandler mockHandler = mock(HttpRequestHandler.class);
+    private final HttpRequestListener mockListener = mock(HttpRequestListener.class);
     private HttpLogServer server;
 
     @Before
     public void setUp() {
-        server = new HttpLogServer(mockHandler);
+        when(mockListener.getConfig()).thenReturn(HttpServerConfigBuilder.aHttpServerConfig().build());
+        server = new HttpLogServer(mockListener);
     }
 
     @Test

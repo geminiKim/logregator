@@ -18,7 +18,7 @@ public class LogTailer implements Worker {
 
     public void start() {
         if(work == true) return;
-        tailer = Tailer.create(new File(listener.getPath()), listener, 100, true);
+        tailer = Tailer.create(new File(listener.getConfig().getPath()), listener, 100, true);
         work = true;
     }
 
