@@ -6,6 +6,11 @@
         </encoder>
     </appender>
 
+    <logger name="org.mongodb.driver">
+        <level value="OFF"/>
+    </logger>
+
+
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
