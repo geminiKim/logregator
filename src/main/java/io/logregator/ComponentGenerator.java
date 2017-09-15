@@ -12,8 +12,8 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Slf4j
-public class ComponentBuilder {
-    public static List<Component> build(LogregatorConfig config) {
+public class ComponentGenerator {
+    public static List<Component> generate(LogregatorConfig config) {
         return config.getConfigs().stream()
                 .map(each -> {
                     Sender sender = SenderBuilder.build(each.getSender());

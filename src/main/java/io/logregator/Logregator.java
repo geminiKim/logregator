@@ -13,7 +13,7 @@ public class Logregator {
     public static void main(String[] args) {
         LogregatorConfig config = ConfigLoader.load();
 
-        List<Component> components = ComponentBuilder.build(config);
+        List<Component> components = ComponentGenerator.generate(config);
         List<Worker> workers = WorkerBuilder.build(components);
 
         for (Worker worker : workers) {
