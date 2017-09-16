@@ -1,38 +1,33 @@
 package io.logregator.config;
 
-import io.logregator.config.component.ComponentConfig;
-import io.logregator.config.component.ComponentType;
+import com.google.common.collect.Maps;
+
+import java.util.Map;
 
 public final class ConfigBuilder {
-    private ComponentConfig listener = buildDefaultConfigDetail();
-    private ComponentConfig sender = buildDefaultConfigDetail();
+    private ComponentType type = ComponentType.http;
+    private Map<String, Object> config = Maps.newHashMap();
 
     private ConfigBuilder() {
     }
 
-    private ComponentConfig buildDefaultConfigDetail() {
-        ComponentConfig detail = new ComponentConfig(ComponentType.http);
-        return detail;
-    }
-
-    public static ConfigBuilder aConfig() {
+    public static ConfigBuilder aConfigDetail() {
         return new ConfigBuilder();
     }
 
-    public ConfigBuilder withListener(ComponentConfig listener) {
-        this.listener = listener;
+    public ConfigBuilder withType(ComponentType type) {
+        this.type = type;
         return this;
     }
 
-    public ConfigBuilder withSender(ComponentConfig sender) {
-        this.sender = sender;
+    public ConfigBuilder withConfig(Map<String, Object> config) {
+        this.config = config;
         return this;
     }
 
     public Config build() {
-        Config config = new Config();
-        config.setListener(listener);
-        config.setSender(sender);
+        Config config = new Config(type);
+        config.setConfig(this.config);
         return config;
     }
 }

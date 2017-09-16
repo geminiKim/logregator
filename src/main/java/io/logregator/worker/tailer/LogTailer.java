@@ -1,17 +1,17 @@
 package io.logregator.worker.tailer;
 
-import io.logregator.listener.tailer.LogTailerListener;
+import io.logregator.listener.tailer.LogTailerAggregator;
 import io.logregator.worker.Worker;
 import org.apache.commons.io.input.Tailer;
 
 import java.io.File;
 
 public class LogTailer implements Worker {
-    private final LogTailerListener listener;
+    private final LogTailerAggregator listener;
     private Tailer tailer;
     private boolean work;
 
-    public LogTailer(LogTailerListener listener) {
+    public LogTailer(LogTailerAggregator listener) {
         this.listener = listener;
         this.work = false;
     }

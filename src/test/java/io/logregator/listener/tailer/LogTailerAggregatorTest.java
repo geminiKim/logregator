@@ -1,6 +1,6 @@
 package io.logregator.listener.tailer;
 
-import io.logregator.sender.Sender;
+import io.logregator.sender.Transporter;
 import org.apache.commons.io.input.TailerListener;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,19 +8,19 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class LogTailerListenerTest {
-    private final Sender mockSender = mock(Sender.class);
+public class LogTailerAggregatorTest {
+    private final Transporter mockTransporter = mock(Transporter.class);
 
     private TailerListener listener;
 
     @Before
     public void setup() {
-        listener = new LogTailerListener(TailerConfigBuilder.aTailerConfig().build(), mockSender);
+        listener = new LogTailerAggregator(TailerConfigBuilder.aTailerConfig().build(), mockTransporter);
     }
 
     @Test
     public void testShouldBeCallSend() throws Exception {
         listener.handle("test");
-        verify(mockSender).send("test");
+        verify(mockTransporter).send("test");
     }
 }

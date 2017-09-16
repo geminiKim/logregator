@@ -6,7 +6,7 @@ import com.mongodb.MongoTimeoutException;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.Config;
 import io.logregator.support.exception.LogregatorException;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +24,7 @@ public class MongoConfig {
     protected MongoConfig() {
     }
 
-    public MongoConfig(ComponentConfig config) {
+    public MongoConfig(Config config) {
         try {
             MongoClientOptions.Builder builder = MongoClientOptions.builder().connectTimeout(5000).socketTimeout(5000).serverSelectionTimeout(3000);
             client = new MongoClient(new ServerAddress(config.getConfigString("host"), config.getConfigInt("port")), builder.build());

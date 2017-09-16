@@ -8,14 +8,14 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class MongoSenderTest {
+public class MongoTransporterTest {
     private final MongoCollection mockCollection = mock(MongoCollection.class);
-    private MongoSender sender;
+    private MongoTransporter sender;
 
     @Before
     public void setup() {
         MongoConfig config = MongoConfigBuilder.aMongoConfig().withCollection(mockCollection).build();
-        sender = new MongoSender(config);
+        sender = new MongoTransporter(config);
     }
 
     @Test

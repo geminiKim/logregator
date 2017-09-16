@@ -1,8 +1,8 @@
 package io.logregator.listener.http;
 
-import io.logregator.config.component.ComponentType;
-import io.logregator.listener.Listener;
-import io.logregator.sender.Sender;
+import io.logregator.config.ComponentType;
+import io.logregator.listener.Aggregator;
+import io.logregator.sender.Transporter;
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
@@ -14,20 +14,20 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class HttpRequestListener implements HttpRequestHandler, Listener {
+public class HttpRequestAggregator implements HttpRequestHandler, Aggregator {
     private final HttpServerConfig config;
-    private final Sender sender;
+    private final Transporter transporter;
 
-    public HttpRequestListener(HttpServerConfig config, Sender sender) {
+    public HttpRequestAggregator(HttpServerConfig config, Transporter transporter) {
         this.config = config;
-        this.sender = sender;
+        this.transporter = transporter;
     }
 
     @Override
     public void handle(HttpRequest request, HttpResponse response, HttpContext context) throws HttpException, IOException {
         switch (request.getRequestLine().getMethod()) {
             case HttpPost.METHOD_NAME:
-                sender.send(EntityUtils.toString(((BasicHttpEntityEnclosingRequest) request).getEntity()));
+                transporter.send(EntityUtils.toString(((BasicHttpEntityEnclosingRequest) request).getEntity()));
         }
     }
 

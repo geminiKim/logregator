@@ -1,4 +1,4 @@
-package io.logregator.config.component;
+package io.logregator.config;
 
 public enum ComponentType {
     tail, http, mongo

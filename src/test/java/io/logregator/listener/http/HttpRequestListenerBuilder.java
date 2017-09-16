@@ -1,10 +1,10 @@
 package io.logregator.listener.http;
 
-import io.logregator.sender.Sender;
+import io.logregator.sender.Transporter;
 
 public final class HttpRequestListenerBuilder {
     private HttpServerConfig config = HttpServerConfigBuilder.aHttpServerConfig().build();
-    private Sender sender;
+    private Transporter transporter;
 
     private HttpRequestListenerBuilder() {
     }
@@ -18,13 +18,13 @@ public final class HttpRequestListenerBuilder {
         return this;
     }
 
-    public HttpRequestListenerBuilder withSender(Sender sender) {
-        this.sender = sender;
+    public HttpRequestListenerBuilder withSender(Transporter transporter) {
+        this.transporter = transporter;
         return this;
     }
 
-    public HttpRequestListener build() {
-        HttpRequestListener httpRequestListener = new HttpRequestListener(config, sender);
+    public HttpRequestAggregator build() {
+        HttpRequestAggregator httpRequestListener = new HttpRequestAggregator(config, transporter);
         return httpRequestListener;
     }
 }

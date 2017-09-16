@@ -1,6 +1,6 @@
 package io.logregator.listener.http;
 
-import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.Config;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +12,7 @@ public class HttpServerConfig {
 
     protected HttpServerConfig() {
     }
-    public HttpServerConfig(ComponentConfig config) {
+    public HttpServerConfig(Config config) {
         uri = config.getConfigString("uri");
         port = config.getConfigInt("port");
     }

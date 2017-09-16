@@ -1,6 +1,6 @@
 package io.logregator.sender.http;
 
-import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.Config;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.http.client.HttpClient;
@@ -15,7 +15,7 @@ public class HttpConfig {
     protected HttpConfig() {
     }
 
-    public HttpConfig(ComponentConfig config) {
+    public HttpConfig(Config config) {
         httpClient = HttpClientBuilder.create().build();
         url = config.getConfigString("url");
     }

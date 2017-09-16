@@ -1,6 +1,6 @@
 package io.logregator.listener.http;
 
-import io.logregator.sender.Sender;
+import io.logregator.sender.Transporter;
 import org.apache.http.HttpRequest;
 import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
@@ -14,13 +14,13 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class HttpRequestListenerTest {
-    private final Sender mockSender = mock(Sender.class);
+    private final Transporter mockTransporter = mock(Transporter.class);
 
-    private HttpRequestListener httpRequestListener;
+    private HttpRequestAggregator httpRequestListener;
 
     @Before
     public void setup() {
-        httpRequestListener = new HttpRequestListener(HttpServerConfigBuilder.aHttpServerConfig().build(), mockSender);
+        httpRequestListener = new HttpRequestAggregator(HttpServerConfigBuilder.aHttpServerConfig().build(), mockTransporter);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class HttpRequestListenerTest {
         HttpRequest request = buildLogHttpRequest("test");
 
         httpRequestListener.handle(request, null, null);
-        verify(mockSender).send("test");
+        verify(mockTransporter).send("test");
     }
 
     private HttpRequest buildLogHttpRequest(String content) throws UnsupportedEncodingException {

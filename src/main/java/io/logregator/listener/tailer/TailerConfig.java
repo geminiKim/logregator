@@ -1,6 +1,6 @@
 package io.logregator.listener.tailer;
 
-import io.logregator.config.component.ComponentConfig;
+import io.logregator.config.Config;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +12,7 @@ public class TailerConfig {
     protected TailerConfig() {
     }
 
-    public TailerConfig(ComponentConfig config) {
+    public TailerConfig(Config config) {
         this.path = config.getConfigString("filePath");
     }
 }

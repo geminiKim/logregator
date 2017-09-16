@@ -1,9 +1,8 @@
 package io.logregator.config;
 
-import java.util.List;
-
 public final class LogregatorConfigBuilder {
-    private List<Config> configs;
+    private Config aggregator;
+    private Config transporter;
 
     private LogregatorConfigBuilder() {
     }
@@ -12,14 +11,20 @@ public final class LogregatorConfigBuilder {
         return new LogregatorConfigBuilder();
     }
 
-    public LogregatorConfigBuilder withConfigs(List<Config> configs) {
-        this.configs = configs;
+    public LogregatorConfigBuilder withAggregator(Config aggregator) {
+        this.aggregator = aggregator;
+        return this;
+    }
+
+    public LogregatorConfigBuilder withTransporter(Config transporter) {
+        this.transporter = transporter;
         return this;
     }
 
     public LogregatorConfig build() {
         LogregatorConfig logregatorConfig = new LogregatorConfig();
-        logregatorConfig.setConfigs(configs);
+        logregatorConfig.setAggregator(aggregator);
+        logregatorConfig.setTransporter(transporter);
         return logregatorConfig;
     }
 }

@@ -1,7 +1,7 @@
 package io.logregator.sender.mongo;
 
-import io.logregator.config.component.ComponentType;
-import io.logregator.sender.Sender;
+import io.logregator.config.ComponentType;
+import io.logregator.sender.Transporter;
 import io.logregator.support.util.JsonUtils;
 import io.reactivex.subjects.PublishSubject;
 import lombok.extern.slf4j.Slf4j;
@@ -10,11 +10,11 @@ import org.bson.Document;
 import java.util.Map;
 
 @Slf4j
-public class MongoSender implements Sender {
+public class MongoTransporter implements Transporter {
     private final MongoConfig config;
     private final PublishSubject<String> subject;
 
-    public MongoSender(MongoConfig configuration) {
+    public MongoTransporter(MongoConfig configuration) {
         config = configuration;
         subject = PublishSubject.create();
         subject.subscribe(message -> {

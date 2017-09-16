@@ -1,6 +1,6 @@
 package io.logregator.worker.http;
 
-import io.logregator.listener.http.HttpRequestListener;
+import io.logregator.listener.http.HttpRequestAggregator;
 import io.logregator.support.exception.LogregatorException;
 import io.logregator.worker.Worker;
 import org.apache.http.impl.bootstrap.HttpServer;
@@ -10,7 +10,7 @@ public class HttpLogServer implements Worker {
     private final HttpServer server;
     private boolean work;
 
-    public HttpLogServer(HttpRequestListener httpHandler) {
+    public HttpLogServer(HttpRequestAggregator httpHandler) {
         this.server = ServerBootstrap.bootstrap()
                                     .registerHandler(httpHandler.getConfig().getUri(), httpHandler)
                                     .setListenerPort(httpHandler.getConfig().getPort())

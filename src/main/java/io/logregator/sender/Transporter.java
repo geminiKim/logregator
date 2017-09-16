@@ -1,8 +1,8 @@
 package io.logregator.sender;
 
-import io.logregator.config.component.ComponentType;
+import io.logregator.config.ComponentType;
 
-public interface Sender {
+public interface Transporter {
     void send(String message);
     ComponentType getType();
 }

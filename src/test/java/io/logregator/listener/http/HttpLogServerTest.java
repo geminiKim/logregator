@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class HttpLogServerTest {
-    private final HttpRequestListener mockListener = mock(HttpRequestListener.class);
+    private final HttpRequestAggregator mockListener = mock(HttpRequestAggregator.class);
     private HttpLogServer server;
 
     @Before

@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class LogTailerTest {
-    private final LogTailerListener mockTailerListener = mock(LogTailerListener.class);
+    private final LogTailerAggregator mockTailerListener = mock(LogTailerAggregator.class);
 
     private LogTailer tailer;
 
