@@ -1,25 +1,24 @@
-package io.logregator.sender;
+package io.logregator.listener;
 
 import io.logregator.config.ComponentConfigBuilder;
 import io.logregator.config.component.ComponentConfig;
 import io.logregator.config.component.ComponentType;
-import org.apache.http.client.HttpClient;
+import io.logregator.sender.http.HttpSender;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
-public class SenderBuilderTest {
+public class ListenerGeneratorTest {
     private final ComponentConfigBuilder componentConfigBuilder = ComponentConfigBuilder.aConfigDetail();
 
     @Test
-    public void testShouldBeBuildHttpSender() {
+    public void testShouldBeBuildHttpListener() {
         ComponentConfig config = componentConfigBuilder.withType(ComponentType.http).build();
-        config.addConfig("url", "test");
-        config.addConfig("_httpClient", mock(HttpClient.class));
 
-        Sender sender = SenderBuilder.build(config);
-        assertThat(sender.getType(), is(ComponentType.http));
+        Listener listener = ListenerGenerator.build(config, mock(HttpSender.class));
+        assertThat(listener.getType(), is(ComponentType.http));
     }
+
 }

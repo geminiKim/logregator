@@ -10,7 +10,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class WorkerBuilder {
+public class WorkerGenerator {
     public static List<Worker> build(List<Component> components) {
         return components.stream().map(each -> {
             switch (each.getListener().getType()) {

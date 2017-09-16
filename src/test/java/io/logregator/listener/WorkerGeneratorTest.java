@@ -6,7 +6,7 @@ import io.logregator.ComponentBuilder;
 import io.logregator.listener.http.HttpRequestListener;
 import io.logregator.listener.http.HttpRequestListenerBuilder;
 import io.logregator.worker.Worker;
-import io.logregator.worker.WorkerBuilder;
+import io.logregator.worker.WorkerGenerator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class WorkerBuilderTest {
+public class WorkerGeneratorTest {
     private HttpRequestListener httpListener;
     private Component component;
 
@@ -27,7 +27,7 @@ public class WorkerBuilderTest {
 
     @Test
     public void testShouldBeBuildWorkers() {
-        List<Worker> workers = WorkerBuilder.build(Lists.newArrayList(component));
+        List<Worker> workers = WorkerGenerator.build(Lists.newArrayList(component));
         assertThat(workers.size(), is(1));
     }
 }

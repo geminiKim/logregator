@@ -8,7 +8,7 @@ import io.logregator.sender.mongo.MongoSender;
 import io.logregator.support.exception.LogregatorException;
 
 
-public class SenderBuilder {
+public class SenderGenerator {
     public static Sender build(ComponentConfig config) {
         switch (config.getType()) {
             case http:

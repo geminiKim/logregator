@@ -8,7 +8,7 @@ import io.logregator.listener.tailer.TailerConfig;
 import io.logregator.sender.Sender;
 import io.logregator.support.exception.LogregatorException;
 
-public class ListenerBuilder {
+public class ListenerGenerator {
     public static Listener build(ComponentConfig config, Sender sender) {
         switch (config.getType()) {
             case tail:
