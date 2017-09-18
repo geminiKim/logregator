@@ -1,0 +1,15 @@
+{
+    "aggregator":{
+        "type": "http",
+        "config":{
+            "uri": "/log",
+            "port": 8888
+        }
+    },
+    "transporter":{
+        "type":"http",
+        "config":{
+            "url": "http://localhost:9999/log"
+        }
+    }
+}

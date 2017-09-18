@@ -1,0 +1,18 @@
+{
+    "aggregator":{
+        "type": "tail",
+        "config":{
+            "filePath": "/Workspace/geminikim/logregator/bin/test-log.log",
+            "tailDelay": 100
+        }
+    },
+    "transporter":{
+        "type":"mongo",
+        "config":{
+            "host": "localhost",
+            "port": 27017,
+            "database": "logregator",
+            "collection": "log"
+        }
+    }
+}

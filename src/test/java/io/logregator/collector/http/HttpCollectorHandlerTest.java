@@ -4,6 +4,7 @@ import io.logregator.collector.Collector;
 import org.apache.http.HttpRequest;
 import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
+import org.apache.http.message.BasicHttpResponse;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class HttpCollectorHandlerTest {
     public void testShouldBeCallHandleByHttpRequest() throws Exception {
         HttpRequest request = buildLogHttpRequest("test");
 
-        httpRequestListener.handle(request, null, null);
+        httpRequestListener.handle(request, mock(BasicHttpResponse.class), null);
         verify(mockCollector).collect("test");
     }
 
