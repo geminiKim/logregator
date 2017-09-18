@@ -10,7 +10,7 @@ public class ConfigLoaderTest {
 
     @Test
     public void testShouldBeLoadConfig() {
-        LogregatorConfig config = ConfigLoader.load();
+        LogregatorConfig config = ConfigLoader.load(new LogregatorArgument());
         assertThat(config.getAggregator(), is(notNullValue()));
         assertThat(config.getTransporter(), is(notNullValue()));
     }

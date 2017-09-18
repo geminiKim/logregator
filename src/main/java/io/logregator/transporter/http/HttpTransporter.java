@@ -22,7 +22,7 @@ public class HttpTransporter implements Transporter {
                 request.setEntity(new StringEntity(message, ContentType.APPLICATION_JSON));
                 config.getHttpClient().execute(request);
             } catch (Exception e) {
-                log.error("send fail", e);
+                log.error("Http transport fail", e);
             }
         });
     }

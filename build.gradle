@@ -9,6 +9,30 @@ repositories {
     mavenCentral()
 }
 
+clean {
+    delete 'bin'
+    delete 'log'
+}
+
+task buildExcutableJar(group: 'build', type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+    manifest {
+        attributes 'Main-Class': 'io.logregator.Logregator'
+    }
+    doLast {
+        copy {
+            from 'build/libs'
+            into 'bin'
+        }
+        copy {
+            from 'config'
+            into 'bin/config'
+        }
+    }
+}
+
 dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '22.0'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'

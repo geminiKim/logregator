@@ -6,12 +6,31 @@
         </encoder>
     </appender>
 
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>logName</key>
+            <defaultValue>unknown</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>log/${logName}-logregator.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <fileNamePattern>log/${logName}-logregator-%d{yyyy-MM-dd}.log</fileNamePattern>
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <encoder>
+                    <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c:%M:%L - %m%n</Pattern>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
     <logger name="org.mongodb.driver">
         <level value="OFF"/>
     </logger>
 
-
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="SIFT"/>
     </root>
 </configuration>
