@@ -1,0 +1,15 @@
+{
+    "aggregator":{
+        "type": "tail",
+        "config":{
+            "filePath": "/Users/gemini/Desktop/test.log",
+            "tailDelay": 100
+        }
+    },
+    "transporter":{
+        "type":"http",
+        "config":{
+            "url": "http://localhost:8888/log"
+        }
+    }
+}

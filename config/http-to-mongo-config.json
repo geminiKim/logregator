@@ -1,0 +1,18 @@
+{
+    "aggregator":{
+        "type": "http",
+        "config":{
+            "uri": "/log",
+            "port": 8899
+        }
+    },
+    "transporter":{
+        "type":"mongo",
+        "config":{
+            "host": "localhost",
+            "port": 27017,
+            "database": "logregator",
+            "collection": "log"
+        }
+    }
+}
